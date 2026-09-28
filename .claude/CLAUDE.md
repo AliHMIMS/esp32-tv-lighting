@@ -7,4 +7,5 @@
 - Never commit secrets: `secrets.h` and `secrets.ini` are git-ignored in every sub-project.
 
 ## Layout
+- `receiver/`: main firmware. Hyperion FlatBuffers server on TCP 19400 fed by the grabber app on the TV. Test with `py receiver/tools/fake_grabber.py verify` after changes.
 - `camera/`: archived camera-based prototype (ESP32-S3 + OV2640 watches the TV). Kept for future reference and still builds on its own.
