@@ -28,8 +28,9 @@ OTA uploads need an inbound firewall rule for TCP port 40000 on Windows.
 
 The PC's USB port can't supply the Wi-Fi start-up current (brownout loop, reset reason 9). Flashing over USB still works; run the board from a phone charger or the 5 V supply.
 
-## TV setup (grabber app)
+## Guides
 
-1. Sideload [`app-release.apk`](https://github.com/evanwhitt/hyperion-android-reborn/releases) (e.g. with the Downloader app).
-2. Host `tv-ambilight.local` (or the board's IP), port `19400`.
-3. On TCL, if the picture comes through black, use capture method "Codec (compatibility)" at size Small.
+1. [Power supply wiring](docs/power-supply.md): mains terminals, input voltage check, first power-up
+2. [Strip and ESP32 wiring](docs/strip-and-esp32-wiring.md): input end, wires, 330 Ω resistor
+3. [Mounting and testing](docs/strip-mounting.md): cutting, where to start, corners test, tuning
+4. [TV setup](docs/tv-setup.md): grabber app install and the settings that work on the TCL 55P8K
