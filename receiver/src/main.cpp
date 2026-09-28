@@ -37,7 +37,8 @@ static void start_ota() {
 void setup() {
   Serial.begin(115200);
   delay(1500);
-  Serial.println("\nTV Ambilight receiver");
+  // Panics print to the hardware UART, not USB, so at least log why we rebooted.
+  Serial.printf("\nTV Ambilight receiver (reset reason %d)\n", esp_reset_reason());
 
   leds::begin();  // blank the strip early, before Wi-Fi
 
@@ -53,6 +54,7 @@ void setup() {
   }
   Serial.printf("\nConnected, IP %s\n", WiFi.localIP().toString().c_str());
   start_ota();
+
 
   hyperion::begin();
   MDNS.addService("hyperiond-flatbuf", "tcp", hyperion::PORT);

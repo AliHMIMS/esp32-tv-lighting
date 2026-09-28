@@ -308,7 +308,8 @@ bool leds::begin() {
   FastLED.setCorrection(TypicalSMD5050);
   FastLED.clear(true);
 
-  xTaskCreatePinnedToCore(output_task, "leds", 4096, nullptr, 3, nullptr, 1);
+  // Headroom for FastLED's RMT setup and power-limit maths on show().
+  xTaskCreatePinnedToCore(output_task, "leds", 8192, nullptr, 3, nullptr, 1);
   return true;
 }
 
