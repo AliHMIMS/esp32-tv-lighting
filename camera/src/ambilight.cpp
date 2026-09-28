@@ -395,10 +395,13 @@ bool ambilight::capture_jpeg(uint8_t **buf, size_t *len) {
   return ok;
 }
 
+// Only used for OTA, which reboots afterwards, so the camera is never re-initialized.
 void ambilight::pause(bool p) {
   paused = p;
   if (p) {
     delay(150);  // let the processing task finish its current frame
     FastLED.clear(true);
+    // Camera DMA into PSRAM while OTA writes flash stalls the upload at 0%.
+    esp_camera_deinit();
   }
 }
